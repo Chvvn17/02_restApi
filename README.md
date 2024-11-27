@@ -16,3 +16,5 @@ This project was created using `bun init` in bun v1.1.33. [Bun](https://bun.sh) 
 
 # Projekt 02_restApi
 Teständerung für GitHub-Push.
+
+Änderungen direkt auf GitHub vorgenommen.

@@ -1,9 +1,9 @@
 import express, { type Express, type Request, type Response } from 'express'
-import { db } from './database'
-import { postsTable } from './db/schema'
+import { db } from '../database'
+import { postsTable } from '../db/schema'
 import { eq } from 'drizzle-orm'
 
-export const initializeAPI = (app: Express) => {  
+export const initializePostsAPI = (app: Express) => {  
   //GET-function for all posts
   app.get('/posts', async (req: Request, res: Response) => {
     const posts = await db.select().from(postsTable)

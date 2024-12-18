@@ -12,14 +12,17 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.36.3",
     "express": "^4.21.1",
+    "ollama": "^0.5.11",
     "pg": "^8.13.1"
   },
   "scripts": {
-        "dev": "bun --watch ./src/app.ts",
-        "prod": "bun ./src/app.ts"
-    }
+    "dev": "bun --watch ./src/app.ts",
+    "prod": "bun ./src/app.ts"
+  }
 }

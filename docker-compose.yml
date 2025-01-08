@@ -39,3 +39,10 @@ services:
       - command=/bin/sh -c "bunx drizzle-kit push && bun run prod"
     depends_on:
       - postgres_db
+
+  minitwitter-frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    environment:
+      - NUXT_PUBLIC_API_BASE_URL=http://localhost:80

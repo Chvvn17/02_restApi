@@ -59,10 +59,6 @@ services:
     image: redis/redis-stack:latest
     ports:
       - 6379:6379
+      - 8001:8001 #Webinterface of Redis
     healthcheck:
       test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
-    volumes:
-      - redis_data:/data
-
-  volumes:
-    redis_data:

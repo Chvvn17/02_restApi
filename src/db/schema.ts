@@ -6,6 +6,8 @@ export const postsTable = pgTable("posts", {
   userId: integer()
     .notNull()
     .references(() => usersTable.id, {onDelete: 'cascade'}),
+    sentiment: varchar({ length: 50 }),
+    correction: varchar({ length: 255 }),
 })
 
 export const usersTable = pgTable('users', {

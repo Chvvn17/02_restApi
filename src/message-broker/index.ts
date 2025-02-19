@@ -1,5 +1,6 @@
 import { Job, Queue, Worker } from 'bullmq'
 import IORedis from 'ioredis'
+import { SERVER_ROLE } from '../app'  // SERVER_ROLE importieren
 
 let sentimentQueue: Queue
 let sentimentWorker: Worker
@@ -11,9 +12,14 @@ export const initializeMessageBroker = () => {
     maxRetriesPerRequest: null,
   })
 
+  // message-broker/index.ts
   sentimentQueue = new Queue('sentiment', { connection })
-  sentimentWorker = new Worker('sentiment', analyzeSentiment, { connection })
-  console.log('Message broker initialized')
+  console.log('Sentiment queue initialized')
+
+  if (SERVER_ROLE === 'all' || SERVER_ROLE === 'worker') {
+    sentimentWorker = new Worker('sentiment', analyzeSentiment, { connection })
+    console.log('Sentiment worker initialized')
+  }
 }
 
 const analyzeSentiment = async (job: Job) => {
@@ -25,3 +31,4 @@ const analyzeSentiment = async (job: Job) => {
 }
 
 export { sentimentQueue }
+
